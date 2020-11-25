@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"target": "ES2016",
+		"module": "umd",
+		"lib": [
+			"es5",
+			"esnext",
+			"dom"
+		],
+		"sourceMap": true,
+		"strict": true,
+		"esModuleInterop": true
+	},
+	"exclude": [
+		"node_modules"
+	]
+}
