@@ -1,5 +1,3 @@
-import {isNil, isArray, isString} from "lodash"
-
 interface QueryObject {
     key: string,
     value: QueryValueList,
@@ -23,6 +21,18 @@ function decode(value: string): string {
  */
 function encode(value: string): string {
     return encodeURI(value);
+}
+
+function isString(value?: any): value is string {
+    return typeof value === "string";
+}
+
+function isNil(value?: any): value is null | undefined {
+    return value === null || typeof value === 'undefined';
+}
+
+function isArray(value?: any): value is any[] {
+    return Array.isArray(value);
 }
 
 /**

@@ -4,13 +4,12 @@
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "lodash"], factory);
+        define(["require", "exports"], factory);
     }
 })(function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.QueryBuilder = exports.URLBuilder = void 0;
-    const lodash_1 = require("lodash");
     /**
      *
      * @param value
@@ -25,6 +24,15 @@
     function encode(value) {
         return encodeURI(value);
     }
+    function isString(value) {
+        return typeof value === "string";
+    }
+    function isNil(value) {
+        return value === null || typeof value === 'undefined';
+    }
+    function isArray(value) {
+        return Array.isArray(value);
+    }
     /**
      * URLを分解、URLBuilderオブジェクトにパーツを収納する
      * @param obj
@@ -32,7 +40,7 @@
      */
     function parseURL(obj, url) {
         const pattern = url.match(/^(?:(\w.+?):)?(?:\/\/(?:(.+?)(?::(.+?))?@)?([^\/:]+)(?::([0-9]+))?\/?)?([^?#]*?)?(?:\?(.*?))?(?:#(.*?))?$/);
-        if (lodash_1.isArray(pattern)) {
+        if (isArray(pattern)) {
             obj.scheme = pattern[1] || "";
             obj.user = pattern[2] || "";
             obj.password = pattern[3] || "";
@@ -108,11 +116,11 @@
         const args = [];
         obj.keys.forEach((key) => {
             const values = obj.get(key);
-            if (lodash_1.isNil(values)) {
+            if (isNil(values)) {
                 return;
             }
             for (let value of values) {
-                if (lodash_1.isNil(value)) {
+                if (isNil(value)) {
                     args.push(encode(key));
                 }
                 else {
@@ -208,7 +216,7 @@
          */
         single(key) {
             const value = this.get(key);
-            if (lodash_1.isNil(value) || value.length == 0) {
+            if (isNil(value) || value.length == 0) {
                 return null;
             }
             return value[0];
@@ -279,7 +287,7 @@
          * @param replace
          */
         merge(queries, replace = false) {
-            if (lodash_1.isString(queries)) {
+            if (isString(queries)) {
                 queries = new QueryBuilder(queries);
             }
             const keys = queries.keys;
