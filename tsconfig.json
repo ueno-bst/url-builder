@@ -1,7 +1,7 @@
 {
 	"compilerOptions": {
 		"target": "ES2016",
-		"module": "umd",
+		"module": "CommonJS",
 		"lib": [
 			"es5",
 			"esnext",
@@ -9,7 +9,8 @@
 		],
 		"sourceMap": true,
 		"strict": true,
-		"esModuleInterop": true
+		"esModuleInterop": true,
+		"declaration": true
 	},
 	"exclude": [
 		"node_modules"
