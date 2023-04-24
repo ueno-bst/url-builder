@@ -3,5 +3,6 @@
 
 # Exclude Development files
 .gitignore
-test/*.d.ts
-test/*.js.map
+.npmrc
+tsconfig.json
+tsconfig.*.json

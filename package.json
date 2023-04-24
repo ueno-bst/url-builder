@@ -1,27 +1,29 @@
 {
-	"name": "@tueeeeno/url-builder",
-	"version": "1.0.1",
+	"name": "@ueno-bst/url-builder",
+	"version": "1.0.2",
 	"description": "",
-	"main": "index.js",
+	"main": "./cjs/index.js",
+	"types": "./esm/index.d.js",
+	"module": "./esm/index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
+		"build": "yarn build:cjs && yarn build:mjs",
+		"build:cjs": "tsc --build tsconfig.cjs.json",
+		"build:mjs": "tsc --build tsconfig.esm.json"
 	},
+	"files": [
+		"cjs",
+		"esm",
+		"src"
+	],
 	"keywords": [],
 	"author": "tueeeeno",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/tueeeeno/url-builder.git"
+		"url": "https://github.com/ueno-bst/url-builder.git"
 	},
 	"dependencies": {},
 	"devDependencies": {
-		"@types/chai": "^4.2.14",
-		"@types/mocha": "^8.0.4",
-		"@types/node": "^14.14.10",
-		"chai": "^4.2.0",
-		"mocha": "^8.2.1",
-		"ts-loader": "^8.0.11",
-		"ts-node": "^9.0.0",
-		"typescript": "^4.1.2"
+		"typescript": "^5.0.4"
 	}
 }

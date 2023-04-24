@@ -1,18 +1,40 @@
 {
-	"compilerOptions": {
-		"target": "ES2016",
-		"module": "CommonJS",
-		"lib": [
-			"es5",
-			"esnext",
-			"dom"
-		],
-		"sourceMap": true,
-		"strict": true,
-		"esModuleInterop": true,
-		"declaration": true
-	},
-	"exclude": [
-		"node_modules"
-	]
+    "compilerOptions": {
+        "jsx": "preserve",
+        "target": "ES6",
+        "module": "CommonJS",
+        "lib": [
+            "dom",
+            "DOM.Iterable",
+            "ES2018"
+        ],
+        "moduleResolution": "Node",
+        "moduleDetection": "force",
+        "skipLibCheck": true,
+        "strict": true,
+        "allowJs": true,
+        "noEmit": false,
+//        "resolveJsonModule": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true,
+        "declaration": false,
+        "declarationMap": false,
+        "baseUrl": ".",
+        "sourceMap": true,
+        "typeRoots": [
+            "node_modules/@types",
+            "src"
+        ]
+    },
+    "include": [
+        "src/**/*.ts",
+    ],
+    "exclude": [
+        "node_modules"
+    ],
+    "references": [
+        {
+            "path": "./tsconfig.node.json"
+        }
+    ]
 }
